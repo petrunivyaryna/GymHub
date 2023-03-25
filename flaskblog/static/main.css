@@ -1,0 +1,230 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+@import url(https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,regular,italic,500,500italic,700,700italic,900,900italic);
+
+
+body {
+    height: 100vh;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-image: url(./img/bg.png);
+    background-repeat: no-repeat;
+    color: #333333;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #444444;
+}
+
+.bg-steel {
+    background-color: rgba(155, 82, 27, 0.87);
+}
+
+.navbar {
+    z-index: 100;
+}
+
+.media {
+    margin-right: 40px;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.alert-success {
+    z-index: 1000;
+}
+
+.item {
+    padding: 40px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.item a {
+    color: rgb(5, 184, 148);
+}
+
+.form-control-label,
+.form-check-label {
+    font-family: 'Roboto';
+    font-style: italic;
+    font-weight: 100;
+    font-size: 15.2181px;
+    line-height: 18px;
+    color: #FFFFFF;
+}
+
+.item-btn .btn-outline-info {
+    background-color: #00000000;
+    border-radius: 16.3051px;
+    border: 1.08701px solid #CCCCCC;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16.3051px;
+    line-height: 19px;
+    color: #FFFFFF;
+}
+
+.item-title {
+    white-space: nowrap;
+    text-align: center;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 55.4373px;
+    line-height: 68px;
+    letter-spacing: 0.15em;
+    color: #FFFFFF;
+}
+
+.item-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 60%;
+}
+
+.item-form {
+    width: 60%;
+}
+
+
+.site-header .navbar-nav .nav-link {
+    color: #cbd5db;
+}
+
+.site-header .navbar-nav .nav-link:hover {
+    color: #ffffff;
+}
+
+.site-header .navbar-nav .nav-link.active {
+    font-weight: • 500;
+}
+
+#login,
+#register {
+    background: rgba(155, 82, 27, 0.87);
+}
+
+.account-heading {
+    color: #ffffff;
+}
+
+#account {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(155, 82, 27, 0.87);
+    border-bottom-left-radius: 70.6554px;
+    border-bottom-right-radius: 70.6554px;
+}
+
+#account .item-title {
+    font-size: 30px;
+}
+
+#account .item-form {
+    width: 100%;
+}
+
+#account .item-btn {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.text-secondary {
+    color: white !important;
+}
+
+.media-body {
+    text-align: center;
+}
+
+.content-section {
+    margin-top: 6%;
+    background: #FFFFFF;
+    border-radius: 70.6554px;
+    margin-bottom: 20px;
+}
+
+.footer {
+    width: 100%;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 13px;
+    text-align: center;
+    padding: 0 30px;
+    color: #FFFFFF;
+
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+}
+
+.scheduly {
+    line-height: 19px;
+    padding-right: 140px;
+}
+
+.article-title {
+    color: #444444;
+}
+
+a.article-title:hover {
+    color: #428bca;
+    text-decoration: none;
+}
+
+.article-content {
+    white-space: pre-line;
+}
+
+.article-img {
+    height: 65px;
+    width: 65px;
+    margin-right: 16px;
+}
+
+.article-metadata {
+    padding-bottom: 1px;
+    margin-bottom: 4px;
+    border-bottom: 1px solid #e3e3e3;
+}
+
+.article-metadata a:hover {
+    color: #333;
+    text-decoration: none;
+}
+
+.article-svg {
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+}
+
+.account-img {
+    height: 125px;
+    width: 125px;
+    margin-bottom: 16px;
+}
+
+.account-heading {
+    font-size: 2.5rem;
+}
+
+.form-group {
+    margin-bottom: 0.5rem;
+}
