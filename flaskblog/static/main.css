@@ -229,6 +229,7 @@ a.article-title:hover {
     margin-bottom: 0.5rem;
 }
 
+
 .carousel {
     position: relative;
     height: 600px;
@@ -287,7 +288,7 @@ a.article-title:hover {
 }
 
 .carousel__nav {
-    /* background: pink; */
+    background: white;
     display: flex;
     justify-content: center;
     padding: 10px 0;
