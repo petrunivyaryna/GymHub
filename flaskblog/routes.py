@@ -35,6 +35,14 @@ def home():
 def about():
     return render_template('about.html', title='About')
 
+@app.route("/trainer")
+def trainer():
+    return render_template('trainer.html')
+
+@app.route("/abonement")
+def abonement():
+    return render_template('abonement.html')
+
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():
@@ -164,6 +172,3 @@ def reset_token(token):
         return redirect(url_for('login'))
     return render_template('reset_token.html', title='Reset Password', form=form)
 
-@app.route("/carousel")
-def carousel():
-    return render_template('carousel.html')
