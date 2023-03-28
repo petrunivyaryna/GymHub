@@ -3,7 +3,7 @@
 <div class="row d-flex justify-content-center align-items-center">
     <div class="col-md-8">
         <div class="content-section" , id="trainer">
-            <form method="POST" action="">
+            <form method="POST" action="" class = 'item'>
                 {{ form.hidden_tag() }}
                 <fieldset class="form-group">
                     <legend class="mb-4 text-center item-title">Choose a trainer</legend>
@@ -48,7 +48,7 @@
                         {% endif %}
                     </div>
                 </fieldset>
-                <div class="form-group">
+                <div class="form-group item-btn">
                     {{ form.submit(class="btn btn-outline-info") }}
                 </div>
             </form>

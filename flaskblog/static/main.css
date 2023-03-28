@@ -363,7 +363,7 @@ a.article-title:hover {
 }
 
 .carousel__nav {
-    background: white;
+    background-color: #00000000;
     display: flex;
     justify-content: center;
     padding: 10px 0;
@@ -385,6 +385,7 @@ a.article-title:hover {
 .carousel__indicator.current-slide {
     background: rgba(0, 0, 0, .75);
 }
+
 
 .is-hidden {
     display: none;

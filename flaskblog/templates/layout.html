@@ -32,12 +32,10 @@
           <div class="navbar-nav mr-auto">
             {% if current_user.is_authenticated %}
             <a class="nav-item nav-link" href="{{ url_for('home') }}">Home</a>
-            <a class="nav-item nav-link" href="{{ url_for('about') }}">About</a>
             <a class="nav-item nav-link" href="{{ url_for('trainer') }}">Trainer</a>
             <a class="nav-item nav-link" href="{{ url_for('abonement') }}">Abonements</a>
             {% else %}
             <a class="nav-item nav-link" href="{{ url_for('home') }}">Home</a>
-            <a class="nav-item nav-link" href="{{ url_for('about') }}">About</a>
             {% endif %}
           </div>
           <!-- Navbar Right Side -->
