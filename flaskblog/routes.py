@@ -36,6 +36,7 @@ def about():
     return render_template('about.html', title='About')
 
 @app.route("/trainer")
+@login_required
 def trainer():
     return render_template('trainer.html')
 
