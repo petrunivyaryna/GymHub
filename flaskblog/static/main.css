@@ -8,9 +8,10 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-image: url(./img/bg.png);
+    background-image: url(./img/bg_plus.jpg);
     background-repeat: no-repeat;
     color: #333333;
+    /* background-size: ; */
 }
 
 h1,
@@ -112,12 +113,14 @@ h6 {
 }
 
 #login,
-#register {
+#register,
+#resetpas,
+#token {
     background: rgba(155, 82, 27, 0.87);
 }
 
 .account-heading {
-    color: #ffffff;
+    color: #FFFFFF;
 }
 
 #account {
@@ -151,7 +154,7 @@ h6 {
 }
 
 .content-section {
-    margin-top: 6%;
+    margin-top: 3%;
     background: #FFFFFF;
     border-radius: 70.6554px;
     margin-bottom: 20px;
@@ -162,7 +165,7 @@ h6 {
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 13px;
     line-height: 13px;
     text-align: center;
     padding: 0 30px;
@@ -227,13 +230,84 @@ a.article-title:hover {
 
 .form-group {
     margin-bottom: 0.5rem;
+    margin-top: -0.5rem;
 }
 
+#about {
+    background: rgba(155, 82, 27, 0.87);
+}
+
+.about-us {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 22px;
+    text-align: center;
+    color: #FFFFFF;
+    gap: 45px;
+}
+
+.lines {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.line {
+    width: 90px;
+    border: 2px solid #000000;
+    border-radius: 10px;
+}
+
+.item-img img {
+    width: 400px;
+    object-fit: contain;
+}
+
+#resetpas  .item-title, #token .item-title {
+    font-size: 30px;
+}
+
+.smalltext{
+    color: white;
+}
+
+#trainer {
+    position: absolute;
+    width: 579px;
+    height: 450px;
+    right: 500px;
+    top: 15px;
+    border-radius: 70.6554px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(155, 82, 27, 0.87);
+    border-bottom-left-radius: 70.6554px;
+    border-bottom-right-radius: 70.6554px;
+}
+
+#trainer .form-group {
+    margin-bottom: 1rem;
+}
+
+#trainer .item-title {
+    font-size: 30px;
+}
+
+#trainer .item-form {
+    width: 100%;
+}
 
 .carousel {
-    position: relative;
-    height: 600px;
-    width: 80%;
+    height: 550px;
+    width: 70%;
+    left: 325px;
     margin: 0 auto;
 }
 
@@ -244,10 +318,11 @@ a.article-title:hover {
 }
 
 .carousel__track-container {
-    background: lightgreen;
+    background: #05B895;
     height: 100%;
     position: relative;
     overflow: hidden;
+    border-radius: 50px;
 }
 
 .carousel__track {
@@ -276,15 +351,15 @@ a.article-title:hover {
 }
 
 .carousel__button--left {
-    left: -40px;
+    left: -100px;
 }
 
 .carousel__button--right {
-    right: -40px;
+    right: -100px;
 }
 
 .carousel__button img {
-    width: 12px;
+    width: 50px;
 }
 
 .carousel__nav {
@@ -292,6 +367,7 @@ a.article-title:hover {
     display: flex;
     justify-content: center;
     padding: 10px 0;
+    border-radius: 50px;
 }
 
 .carousel__indicator {

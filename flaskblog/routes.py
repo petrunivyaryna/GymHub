@@ -5,43 +5,21 @@ from PIL import Image
 from flask import render_template, url_for, flash, redirect, request
 from flaskblog import app, db, bcrypt, mail
 from flaskblog.forms import (RegistrationForm, LoginForm, UpdateAccountForm,
-                            RequestResetForm, ResetPasswordForm)
+                            RequestResetForm, ResetPasswordForm, ChooseTrainerForm)
 from flaskblog.models import User
 from flask_login import login_user, current_user, logout_user, login_required
 from flask_mail import Message
-posts = [
-    {
-    'author': 'Corey Schafer',
-    'title': 'Blog Post 1',
-    'content': 'First post content',
-    'date_posted': 'April 20, 2018'
-    },
-    {
-    'author': 'Jane Doe',
-    'title': 'Blog Post 2',
-    'content': 'Second post content',
-    'date_posted': 'April 21, 2018'
-    }
-]
-
 
 @app.route("/")
-@app.route("/home")
+@app.route("/home", methods=['GET', 'POST'])
 def home():
-    return render_template('home.html', posts=posts)
+    form=RegistrationForm()
+    return render_template('home.html', title='Про нас', form=form)
 
 
 @app.route("/about")
 def about():
     return render_template('about.html', title='About')
-
-@app.route("/trainer")
-def trainer():
-    return render_template('trainer.html')
-
-@app.route("/abonement")
-def abonement():
-    return render_template('abonement.html')
 
 
 @app.route("/register", methods=['GET', 'POST'])
@@ -172,3 +150,16 @@ def reset_token(token):
         return redirect(url_for('login'))
     return render_template('reset_token.html', title='Reset Password', form=form)
 
+@app.route("/trainer", methods=['GET', 'POST'])
+@login_required
+def trainer():
+    form = ChooseTrainerForm()
+    if form.validate_on_submit():
+        flash('You have signed up for training', 'info')
+        return redirect(url_for('account'))
+    return render_template('trainer.html', title='Choose Trainer', form=form)
+
+@app.route("/abonement")
+@login_required
+def abonement():
+    return render_template('abonement.html')
