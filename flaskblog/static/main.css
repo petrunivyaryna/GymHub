@@ -9,6 +9,7 @@ body {
     flex-direction: column;
     justify-content: center;
     background-image: url(./img/bg_plus.jpg);
+    background-size: cover;
     background-repeat: no-repeat;
     color: #333333;
     /* background-size: ; */
