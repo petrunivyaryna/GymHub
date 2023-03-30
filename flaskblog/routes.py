@@ -157,3 +157,7 @@ def trainer():
 @login_required
 def abonement():
     return render_template('abonement.html')
+
+@app.route("/table")
+def table():
+    return render_template('table.html')

@@ -1,107 +1,100 @@
-<!DOCTYPE html>
-<html lang="ukraine">
-	<head>
-		<title>Table</title>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="table.css">
-	</head>
-	<body>
-		<table>
-			<thead>
-				<tr>
-					<th class="border-less"></th>
-					<th class="day-hour">Понеділок</th>
-					<th class="day-hour">Вівторок</th>
-					<th class="day-hour">Середа</th>
-					<th class="day-hour">Четвер</th>
-					<th class="day-hour">Пʼятниця</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td class="day-hour">
-						<a>8:30</a>
-                    </td>
-                    <td>
-						<a href=""></a>
-                    </td>
-                    <td class="lesson">
-						<a href="">Гімнастика</a>
-                    </td>
-                    <td>
-						<a href=""></a>
-                    </td>
-                    <td class="lesson">
-						<a href="">Гімнастика</a>
-                    </td>
-                    <td>
-						<a href=""></a>
-                    </td>
-				</tr>
-                
-                <tr>
-					<td class="day-hour">
-						<a>12:45</a>
-                    </td>
-                    <td class="lesson">
-						<a href="">Атлетика</a>
-                    </td>
-                    <td>
-						<a href=""></a>
-                    </td>
-                    <td class="lesson">
-						<a href="">Атлетика</a>
-                    </td>
-                    <td>
-						<a href=""></a>
-                    </td>
-                    <td class="lesson">
-						<a href="">Атлетика</a>
-                    </td>
-				</tr>
+{% extends "layout.html" %}
+{% block content %}
+<table>
+	<thead>
+		<tr>
+			<th class="border-less"></th>
+			<th class="day-hour">Понеділок</th>
+			<th class="day-hour">Вівторок</th>
+			<th class="day-hour">Середа</th>
+			<th class="day-hour">Четвер</th>
+			<th class="day-hour">Пʼятниця</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td class="day-hour">
+				<a>8:30</a>
+			</td>
+			<td>
+				<a href=""></a>
+			</td>
+			<td class="lesson">
+				<a href="">Гімнастика</a>
+			</td>
+			<td>
+				<a href=""></a>
+			</td>
+			<td class="lesson">
+				<a href="">Гімнастика</a>
+			</td>
+			<td>
+				<a href=""></a>
+			</td>
+		</tr>
+		
+		<tr>
+			<td class="day-hour">
+				<a>12:45</a>
+			</td>
+			<td class="lesson">
+				<a href="">Атлетика</a>
+			</td>
+			<td>
+				<a href=""></a>
+			</td>
+			<td class="lesson">
+				<a href="">Атлетика</a>
+			</td>
+			<td>
+				<a href=""></a>
+			</td>
+			<td class="lesson">
+				<a href="">Атлетика</a>
+			</td>
+		</tr>
 
-                <tr>
-					<td class="day-hour">
-						<a>17:00</a>
-                    </td>
-                    <td>
-						<a href=""></a>
-                    </td>
-                    <td class="lesson">
-						<a href="">Розтягування</a>
-                    </td>
-                    <td>
-						<a href=""></a>
-                    </td>
-                    <td class="lesson">
-						<a href="">Розтягування</a>
-                    </td>
-                    <td>
-						<a href=""></a>
-                    </td>
-				</tr>
+		<tr>
+			<td class="day-hour">
+				<a>17:00</a>
+			</td>
+			<td>
+				<a href=""></a>
+			</td>
+			<td class="lesson">
+				<a href="">Розтягування</a>
+			</td>
+			<td>
+				<a href=""></a>
+			</td>
+			<td class="lesson">
+				<a href="">Розтягування</a>
+			</td>
+			<td>
+				<a href=""></a>
+			</td>
+		</tr>
 
-                <tr>
-					<td class="day-hour">
-						<a>18:30</a>
-                    </td>
-                    <td>
-						<a href=""></a>
-                    </td>
-                    <td class="lesson">
-						<a href="">Бальні танці</a>
-                    </td>
-                    <td>
-						<a href=""></a>
-                    </td>
-                    <td class="lesson">
-						<a href="">Бальні танці</a>
-                    </td>
-                    <td class="lesson">
-						<a href=""  class="lesso">Бальні танці</a>
-                    </td>
-				</tr>
-			</tbody>
-		</table>
-	</body>
-</html>
+		<tr>
+			<td class="day-hour">
+				<a>18:30</a>
+			</td>
+			<td>
+				<a href=""></a>
+			</td>
+			<td class="lesson">
+				<a href="">Бальні танці</a>
+			</td>
+			<td>
+				<a href=""></a>
+			</td>
+			<td class="lesson">
+				<a href="">Бальні танці</a>
+			</td>
+			<td class="lesson">
+				<a href=""  class="lesso">Бальні танці</a>
+			</td>
+		</tr>
+	</tbody>
+</table>
+{% endblock content %}
