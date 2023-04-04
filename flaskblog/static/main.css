@@ -113,6 +113,74 @@ h6 {
     font-weight: • 500;
 }
 
+.scrollbox {
+    width: 350px;
+    height: 500px;
+    overflow: auto;
+    border: 1px solid rgba(155, 82, 27, 0.87);
+    padding: 10px;
+    border-radius: 10px;
+    background: rgba(155, 82, 27, 0.87);
+    position: relative;
+    left: 800px;
+    top: -275px;
+}
+
+.scrollbox::-webkit-scrollbar {
+    width: 15px;
+    height: 8px;
+}
+
+.scrollbox::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 8px;
+}
+
+.scrollbox::-webkit-scrollbar-track {
+    background-color: #f5f5f5;
+    border-radius: 8px;
+}
+
+.main_block {
+    background-color: rgba(155, 82, 27, 0.041);
+    height: 45px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.main_block h4 {
+    color: #f0efef;
+    font-family: 'Montserrat';
+    font-style: normal;
+    text-align: center;
+}
+
+.block {
+    background-color: white;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.block h5 {
+    margin-top: 0;
+    font-family: 'Montserrat';
+    font-style: normal;
+}
+
+.block h6 {
+    margin-top: 0;
+    font-family: 'Montserrat';
+    font-style: normal;
+}
+
+.block p {
+    margin-bottom: 0;
+    font-family: 'Montserrat';
+    font-style: normal;
+}
+
 #login,
 #register,
 #resetpas,
@@ -131,6 +199,9 @@ h6 {
     background: rgba(155, 82, 27, 0.87);
     border-bottom-left-radius: 70.6554px;
     border-bottom-right-radius: 70.6554px;
+    position: relative;
+    right: 200px;
+    top: 220px;
 }
 
 #account .item-title {
@@ -270,11 +341,12 @@ a.article-title:hover {
     object-fit: contain;
 }
 
-#resetpas  .item-title, #token .item-title {
+#resetpas .item-title,
+#token .item-title {
     font-size: 30px;
 }
 
-.smalltext{
+.smalltext {
     color: white;
 }
 
@@ -395,10 +467,16 @@ a.article-title:hover {
 
 table {
     /* зробити рамки прозорими */
-    border: 1px solid black; 
+    height: 530px;
+    width: 1200px;
+    position: relative;
+    right: 55px;
+    border: 1px solid black;
     border-collapse: collapse;
 }
-td, th {
+
+td,
+th {
     border: 1px solid black;
     padding: 5px;
 }
@@ -406,14 +484,18 @@ td, th {
 .day-hour {
     background-color: #05B895;
     color: #ffffff;
-    
+    font-family: 'Montserrat';
+    font-style: normal;
+    text-align: center;
 }
 
 .lesson {
     background-color: #FEC20C;
     color: #ffffff;
-    text-decoration: none;
+    font-family: 'Montserrat';
+    font-style: normal;
     text-align: center;
+    font-size: 20px;
 }
 
 a {
@@ -424,4 +506,78 @@ a {
 .border-less {
     border-top: 1px solid #FFFFFF;
     border-left: 1px solid #FFFFFF;
+}
+
+.active {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.abonements {
+    background-color: #00000000;
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+}
+
+.for-student {
+    position: absolute;
+    width: 420px;
+    height: 588px;
+    left: 750px;
+    top: 173px;
+}
+
+.for-guests {
+    position: absolute;
+    width: 420px;
+    height: 588px;
+    left: 700px;
+    top: 237px;
+}
+
+.for-worker {
+    position: absolute;
+    width: 420 px;
+    height: 588 px;
+    left: 255 px;
+    top: 237 px;
+}
+
+.button-yellow-one {
+    position: absolute;
+    width: 170px;
+    height: 50px;
+    left: 420px;
+    top: 610px;
+    background: rgba(221, 191, 40, 0.85);
+    border-radius: 17px;
+    font-family: 'Montserrat';
+    border: none
+}
+
+.button-green {
+    position: absolute;
+    width: 170px;
+    height: 50px;
+    left: 856px;
+    top: 610px;
+    background: rgba(5, 184, 149, 0.87);
+    border-radius: 17px;
+    font-family: 'Montserrat';
+    border: none
+}
+
+.button-yellow-two {
+    position: absolute;
+    width: 170px;
+    height: 50px;
+    left: 1300px;
+    top: 610px;
+    background: rgba(221, 191, 40, 0.85);
+    border-radius: 17px;
+    font-family: 'Montserrat';
+    border: none
 }

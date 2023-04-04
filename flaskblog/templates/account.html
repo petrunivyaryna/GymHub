@@ -13,7 +13,7 @@
             <form method="POST" action="" enctype="multipart/form-data" class="item">
                 {{ form.hidden_tag() }}
                 <fieldset class="form-group item-form">
-                    <legend class="item-title mb-4">Account Info</legend>
+                    <legend class="item-title mb-4">Мій профіль</legend>
                     <div class="form-group">
                         {{ form.username.label(class="form-control-label") }}
                         {% if form.username.errors %}
@@ -56,5 +56,17 @@
             </form>
         </div>
     </div>
+</div>
+<div class="scrollbox">
+    <div class="main_block">
+        <h4>Мої тренування</h4>
+    </div>
+    {% for training in trainings %}
+        <div class="block">
+            <h5>Тренер:</h5><h6>{{ training.trainer }}</h6>
+            <h5>Дата:</h5><p>{{ training.date.strftime("%d/%m/%Y") }}</p>
+            <h5>Час:</h5><p>{{ training.date.strftime("%H:%M") }}</p>
+        </div>
+    {% endfor %}
 </div>
 {% endblock content %}

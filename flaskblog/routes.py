@@ -1,12 +1,13 @@
 import os # for making sure we save the photo in the same extension it was uploaded
 import secrets # for generating random hex
+import datetime
 # to resize the image to 125 pixels in order to save a lot of space in our file system and speed up our web
 from PIL import Image
 from flask import render_template, url_for, flash, redirect, request
 from flaskblog import app, db, bcrypt, mail
 from flaskblog.forms import (RegistrationForm, LoginForm, UpdateAccountForm,
                             RequestResetForm, ResetPasswordForm, ChooseTrainerForm)
-from flaskblog.models import User
+from flaskblog.models import User, Training
 from flask_login import login_user, current_user, logout_user, login_required
 from flask_mail import Message
 
@@ -49,7 +50,6 @@ def login():
             flash('Login Unsuccessful. Please check email and password', 'danger')
     return render_template('login.html', title='Login', form=form)
 
-
 @app.route("/logout")
 def logout():
     logout_user()
@@ -84,6 +84,7 @@ def save_picture(form_picture):
 @login_required # only for logged in ones
 def account():
     form = UpdateAccountForm()
+    trainings = Training.query.filter_by(user_id = current_user.id)
     if form.validate_on_submit():
         if form.picture.data:
             picture_file = save_picture(form.picture.data)
@@ -97,7 +98,7 @@ def account():
         form.username.data = current_user.username
         form.email.data = current_user.email
     image_file = url_for('static', filename='profile_pics/' + current_user.image_file)
-    return render_template('account.html', title='Account', image_file=image_file, form=form)
+    return render_template('account.html', title='Account', image_file=image_file, trainings=trainings, form=form)
 
 
 def send_reset_email(user):
@@ -149,14 +150,19 @@ def reset_token(token):
 def trainer():
     form = ChooseTrainerForm()
     if form.validate_on_submit():
-        flash('You have signed up for training', 'info')
+        my_datatime = datetime.datetime.combine(form.entrydate.data, form.entrytime.data)
+        training = Training(trainer=form.trainername.data, date=my_datatime, author=current_user)
+        db.session.add(training)
+        db.session.commit()
+        flash('You have signed up for training', 'success')
         return redirect(url_for('account'))
     return render_template('trainer.html', title='Choose Trainer', form=form)
 
 @app.route("/abonement")
 @login_required
 def abonement():
-    return render_template('abonement.html')
+    form = RegistrationForm()
+    return render_template('abonement.html', form=form)
 
 @app.route("/table")
 def table():
