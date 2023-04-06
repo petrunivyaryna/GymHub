@@ -6,7 +6,7 @@ from PIL import Image
 from flask import render_template, url_for, flash, redirect, request
 from flaskblog import app, db, bcrypt, mail
 from flaskblog.forms import (RegistrationForm, LoginForm, UpdateAccountForm,
-                            RequestResetForm, ResetPasswordForm, ChooseTrainerForm)
+                            RequestResetForm, ResetPasswordForm, ChooseTrainerForm, GroupTrainings)
 from flaskblog.models import User, Training
 from flask_login import login_user, current_user, logout_user, login_required
 from flask_mail import Message
@@ -94,6 +94,14 @@ def account():
         db.session.commit()
         flash('Your account has been updated!', 'success')
         return redirect(url_for('account'))
+    elif request.method == 'POST' and 'cancel' in request.form:
+        training_id = request.form.get('training_id')
+        if training_id:
+            training = Training.query.get(training_id)
+            db.session.delete(training)
+            db.session.commit()
+            flash('The training has been cancelled.', 'success')
+            return redirect(url_for('account'))
     elif request.method == 'GET': # form already contains the previous information
         form.username.data = current_user.username
         form.email.data = current_user.email
@@ -154,7 +162,7 @@ def trainer():
         training = Training(trainer=form.trainername.data, date=my_datatime, author=current_user)
         db.session.add(training)
         db.session.commit()
-        flash('You have signed up for training', 'success')
+        flash('You have been signed up for a training!', 'success')
         return redirect(url_for('account'))
     return render_template('trainer.html', title='Choose Trainer', form=form)
 
@@ -164,6 +172,24 @@ def abonement():
     form = RegistrationForm()
     return render_template('abonement.html', form=form)
 
-@app.route("/table")
-def table():
+
+
+# pages for the group trainings.
+@app.route("/group_trainings")
+@login_required
+def group_trainings():
     return render_template('table.html')
+
+# gymnastics 1
+@app.route("/gymnastic", methods=['GET', 'POST'])
+@login_required
+def gymnastic():
+    form = GroupTrainings()
+    today = datetime.datetime.today()
+    days_to_go = (0 - today.weekday() + 7) % 7
+    next_date = today + datetime.timedelta(days=days_to_go)
+
+    while next_date.month != today.month:
+        next_date = next_date.replace(day=1)
+        next_date += datetime.timedelta(days=7 - next_date.weekday() + 0)
+    return render_template('gymnastic.html', form=form, date=next_date)

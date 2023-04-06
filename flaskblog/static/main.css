@@ -77,6 +77,25 @@ h6 {
     color: #FFFFFF;
 }
 
+.item-btn-1 .btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    background-color: #00000000;
+    border-radius: 16.3051px;
+    border: 1.08701px solid #05B895;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16.3051px;
+    line-height: 19px;
+    color: #05B895;
+    position: relative;
+    left: 110px;
+}
+
 .item-title {
     white-space: nowrap;
     text-align: center;
@@ -391,7 +410,7 @@ a.article-title:hover {
 }
 
 .carousel__track-container {
-    background: #05B895;
+    background: #05B895A6;
     height: 100%;
     position: relative;
     overflow: hidden;
@@ -503,10 +522,10 @@ a {
     color: #ffffff;
 }
 
-.border-less {
+/* .border-less {
     border-top: 1px solid #FFFFFF;
     border-left: 1px solid #FFFFFF;
-}
+} */
 
 .active {
     display: flex;
@@ -580,4 +599,36 @@ a {
     border-radius: 17px;
     font-family: 'Montserrat';
     border: none
+}
+
+#gymnastic {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #05B895A6;
+    border-bottom-left-radius: 70.6554px;
+    border-bottom-right-radius: 70.6554px;
+    width: 700px;
+    height: 600px;
+    text-align: center;
+    position: relative;
+    right: 20px;
+}
+
+
+#gymnastic .form-group {
+    margin-bottom: 1rem;
+}
+
+#gymnastic .item-title {
+    font-size: 30px;
+}
+
+#gymnastic .item-form {
+    width: 100%;
+}
+
+#gymnastic .item-btn {
+    width: 100%;
+    margin-top: 20px;
 }
