@@ -69,9 +69,7 @@
             <br>
             <form method="POST" action="{{ url_for('account') }}">
                 <input type="hidden" name="training_id" value="{{ training.id }}">
-                <div class="form-group item-btn-1">
-                    <button type="submit" name="cancel" class="btn btn-danger">Cancel</button>
-                </div>
+                <button type="submit" name="cancel" class="btn btn-danger" onclick="clicked(event)">Cancel</button>
             </form>
         </div>
     {% endfor %}
