@@ -475,7 +475,7 @@ a.article-title:hover {
 }
 
 .carousel__indicator.current-slide {
-    background: rgba(0, 0, 0, .75);
+    background: rgba(253, 253, 253, 0.75);
 }
 
 
@@ -612,7 +612,7 @@ a {
     height: 600px;
     text-align: center;
     position: relative;
-    right: 20px;
+    right: 30px;
 }
 
 
