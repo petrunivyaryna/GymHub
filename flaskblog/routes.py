@@ -1,13 +1,14 @@
 import os # for making sure we save the photo in the same extension it was uploaded
 import secrets # for generating random hex
 import datetime
+from get_day import getday
 # to resize the image to 125 pixels in order to save a lot of space in our file system and speed up our web
 from PIL import Image
 from flask import render_template, url_for, flash, redirect, request
 from flaskblog import app, db, bcrypt, mail
 from flaskblog.forms import (RegistrationForm, LoginForm, UpdateAccountForm,
                             RequestResetForm, ResetPasswordForm, ChooseTrainerForm, GroupTrainings)
-from flaskblog.models import User, Training
+from flaskblog.models import User, Training, GroupTraining
 from flask_login import login_user, current_user, logout_user, login_required
 from flask_mail import Message
 
@@ -185,11 +186,12 @@ def group_trainings():
 @login_required
 def gymnastic():
     form = GroupTrainings()
-    today = datetime.datetime.today()
-    days_to_go = (0 - today.weekday() + 7) % 7
-    next_date = today + datetime.timedelta(days=days_to_go)
-
-    while next_date.month != today.month:
-        next_date = next_date.replace(day=1)
-        next_date += datetime.timedelta(days=7 - next_date.weekday() + 0)
-    return render_template('gymnastic.html', form=form, date=next_date)
+    next_date = getday(0)
+    free_places = 15
+    if form.validate_on_submit():
+        if free_places == 1:
+            free_places += 14
+            date = getday(0, next_date)
+            return render_template('gymnastic.html', form=form, date=date, free_places=1)
+        free_places -= 1
+    return render_template('gymnastic.html', form=form, date=next_date, free_places=free_places + 1)
