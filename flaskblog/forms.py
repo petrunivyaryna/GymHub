@@ -80,7 +80,7 @@ class ResetPasswordForm(FlaskForm):
     submit = SubmitField('Запит на скидання пароля')
 
 class ChooseTrainerForm(FlaskForm):
-    trainername = SelectField('Тренери', choices=[("Артем Скопа", "Артем Скопа"), ("Владислав Борисюк", "Владислав Борисюк"), ("Наталя Кравченко", "Наталя Кравченко"), ("Костянтин Новацький", "Костянтин Новацький")])
+    trainername = SelectField('Тренери', choices=[("Костянтин Новацький", "Костянтин Новацький"), ("Владислав Борисюк", "Владислав Борисюк"), ("Наталя Кравченко", "Наталя Кравченко"), ("Артем Скопа", "Артем Скопа")])
     entrydate = DateField('Дата', format='%Y-%m-%d', validators=[DataRequired()])
     entrytime = TimeField('Час', format='%H:%M', validators=[DataRequired()])
     submit = SubmitField('Обрати')
