@@ -525,15 +525,11 @@ th {
     font-size: 20px;
 }
 
+
 a {
     text-decoration: none;
     color: #ffffff;
 }
-
-/* .border-less {
-    border-top: 1px solid #FFFFFF;
-    border-left: 1px solid #FFFFFF;
-} */
 
 .active {
     display: flex;
@@ -549,64 +545,46 @@ a {
     justify-content: center;
 }
 
-.for-student {
-    position: absolute;
+.item-img-1 {
+    position: relative;
     width: 420px;
     height: 588px;
-    left: 750px;
-    top: 173px;
 }
 
-.for-guests {
+.item-img-1 a {
     position: absolute;
-    width: 420px;
-    height: 588px;
-    left: 700px;
-    top: 237px;
+    bottom: 20px;
+    left: 80%;
+    transform: translateX(-50%);
 }
 
-.for-worker {
-    position: absolute;
-    width: 420 px;
-    height: 588 px;
-    left: 255 px;
-    top: 237 px;
-}
-
-.button-yellow-one {
-    position: absolute;
+.button-yellow-one,
+.button-green,
+.button-yellow-two {
+    position: relative; /* змінено з absolute на relative */
     width: 170px;
     height: 50px;
-    left: 420px;
-    top: 610px;
     background: rgba(221, 191, 40, 0.85);
     border-radius: 17px;
     font-family: 'Montserrat';
-    border: none
+    border: none;
+    color: #000000;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 15px; /* змінено з bottom на margin-top */
 }
+
 
 .button-green {
-    position: absolute;
-    width: 170px;
-    height: 50px;
-    left: 856px;
-    top: 610px;
     background: rgba(5, 184, 149, 0.87);
-    border-radius: 17px;
-    font-family: 'Montserrat';
-    border: none
 }
 
-.button-yellow-two {
-    position: absolute;
-    width: 170px;
-    height: 50px;
-    left: 1300px;
-    top: 610px;
-    background: rgba(221, 191, 40, 0.85);
-    border-radius: 17px;
-    font-family: 'Montserrat';
-    border: none
+.button-yellow-one:hover,
+.button-green:hover,
+.button-yellow-two:hover {
+    transform: scale(1.05);
 }
 
 #gymnastic {
