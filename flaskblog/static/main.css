@@ -125,11 +125,15 @@ h6 {
 }
 
 .site-header .navbar-nav .nav-link:hover {
-    color: #ffffff;
+    color: #05B895;
 }
 
 .site-header .navbar-nav .nav-link.active {
     font-weight: • 500;
+}
+
+.nav-item {
+    margin-right: 10px;
 }
 
 .scrollbox {
@@ -205,6 +209,10 @@ h6 {
 #resetpas,
 #token {
     background: rgba(155, 82, 27, 0.87);
+}
+
+#register .item-title {
+    font-size: 29px;
 }
 
 .account-heading {

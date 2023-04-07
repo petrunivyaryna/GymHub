@@ -6,7 +6,7 @@
             <form method="POST" action="" class="item">
                 {{ form.hidden_tag() }}
                 <fieldset class="form-group item-form">
-                    <legend class="mb-0 text-center item-title">Log In</legend>
+                    <legend class="mb-0 text-center item-title">Увійти</legend>
                     <div class="form-group">
                         {{ form.email.label(class="form-control-label") }}
                         {% if form.email.errors %}
@@ -41,12 +41,12 @@
                 <div class="form-group item-btn">
                     {{ form.submit(class="btn btn-outline-info") }}
                     <small class="text-muted ml-2">
-                        <a href="{{ url_for('reset_request') }}">Forgot Password?</a>
+                        <a href="{{ url_for('reset_request') }}">Забули пароль?</a>
                     </small>
                 </div>
                 <div class="border-top pt-3">
                     <small class="smalltext">
-                        Need An Account? <a class="ml-2" href="{{ url_for('register') }}">Sign Up Now</a>
+                        Не маєте облікового запису? <a class="ml-2" href="{{ url_for('register') }}">Зареєструватися</a>
                     </small>
                 </div>
             </form>

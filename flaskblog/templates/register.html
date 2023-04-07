@@ -6,7 +6,7 @@
             <form method="POST" action="" class="item">
                 {{ form.hidden_tag() }}
                 <fieldset class="form-group item-form">
-                    <legend class=" mb-0 item-title">Sign Up</legend>
+                    <legend class=" mb-0 item-title">Зареєструватися</legend>
                     <div class="form-group">
                         {{ form.username.label(class="form-control-label") }}
 
@@ -66,7 +66,7 @@
                 </div>
                 <div class="border-top pt-3">
                     <small class="smalltext">
-                        Already Have An Account? <a class="ml-2" href="{{ url_for('login') }}">Sign In</a>
+                        Уже маєте обліковий запис? <a class="ml-2" href="{{ url_for('login') }}">Увійти</a>
                     </small>
                 </div>
             </form>
