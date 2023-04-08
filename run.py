@@ -1,3 +1,6 @@
+"""
+File that run the application
+"""
 from flaskblog import app
 
 if __name__ == '__main__':

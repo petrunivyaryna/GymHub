@@ -3,13 +3,16 @@ import secrets # for generating random hex
 import datetime
 # to resize the image to 125 pixels in order to save a lot of space in our file system and speed up our web
 from PIL import Image
-from flask import render_template, url_for, flash, redirect, request
-from flaskblog import app, db, bcrypt, mail
+from flask import render_template, url_for, flash, redirect, request # for redirecting to pagees, flashing messages, 
+# running the html templates and for the request
+from flaskblog import app, db, bcrypt, mail # to work with the database and mail
+# forms that get from the forms.py and can use wen on site if field to be filled
 from flaskblog.forms import (RegistrationForm, LoginForm, UpdateAccountForm,
                             RequestResetForm, ResetPasswordForm, ChooseTrainerForm)
+# User to get the user from the database, Training to get the training from the database
 from flaskblog.models import User, Training
-from flask_login import login_user, current_user, logout_user, login_required
-from flask_mail import Message
+from flask_login import login_user, current_user, logout_user, login_required # to work with the registration and login
+from flask_mail import Message # to send the email to the user
 
 @app.route("/")
 @app.route("/home", methods=['GET', 'POST'])
@@ -19,6 +22,7 @@ def home():
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():
+    # if the user is already logged in, we don't want to let him register again
     if current_user.is_authenticated:
         return redirect(url_for('home'))
     form = RegistrationForm()
@@ -83,24 +87,29 @@ def save_picture(form_picture):
 @app.route("/account", methods=['GET', 'POST'])
 @login_required # only for logged in ones
 def account():
+    """
+    In this function we will update the account.
+    Also it is for the user to see his trainings and to cancel them.
+    """
     form = UpdateAccountForm()
     trainings = Training.query.filter_by(user_id = current_user.id)
     if form.validate_on_submit():
+        # to update the picture
         if form.picture.data:
             picture_file = save_picture(form.picture.data)
             current_user.image_file = picture_file
         current_user.username = form.username.data
         current_user.email = form.email.data
         db.session.commit()
-        flash('Ваш обліковий запис було оновлено!', 'success')
         return redirect(url_for('account'))
+
+    # to delete training if the user pressed the button 'cancel'
     elif request.method == 'POST' and 'cancel' in request.form:
         training_id = request.form.get('training_id')
         if training_id:
             training = Training.query.get(training_id)
             db.session.delete(training)
             db.session.commit()
-            flash('Тренування було скасовано.', 'success')
             return redirect(url_for('account'))
     elif request.method == 'GET': # form already contains the previous information
         form.username.data = current_user.username
@@ -132,6 +141,8 @@ def reset_request():
     form = RequestResetForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
+        # sending email only if the user exists
+        # it uses the function above
         send_reset_email(user)
         flash('На Вашу електронну адресу було надіслано листа з інструкціями щодо скидання пароля.', 'info')
         return redirect(url_for('login'))
@@ -141,7 +152,7 @@ def reset_request():
 def reset_token(token):
     if current_user.is_authenticated:
         return redirect(url_for('home'))
-    user = User.verify_reset_token(token)
+    user = User.verify_reset_token(token) # checking if the token is valid
     if user is None:
         flash('Це недійсний або застарілий токен.', 'warning')
         return redirect(url_for('reset_request'))
@@ -157,6 +168,11 @@ def reset_token(token):
 @app.route("/trainer", methods=['GET', 'POST'])
 @login_required
 def trainer():
+    """
+    This function add the training to the database.
+    If the user's chosen trainer is available in chosen date and time
+    then the user will be signed up for the training
+    """
     form = ChooseTrainerForm()
     if form.validate_on_submit():
         my_datatime = datetime.datetime.combine(form.entrydate.data, form.entrytime.data)

@@ -1,18 +1,21 @@
 import datetime
 from flask_wtf import FlaskForm
-from validate_email import validate_email as own_valid
+from validate_email import validate_email as own_valid # for checking if the email is exist
 # FileField: place for uploading a picture
-# FileAllowed: what kind of files we want to allow to be uploded (in our case jpg, png)
+# FileAllowed: what kind of files we want to allow to be uploded (in our case jpg, png, jpeg)
 from flask_wtf.file import FileField, FileAllowed
 from flask_login import current_user # getting the information about the current user
 from wtforms import (StringField, PasswordField, SubmitField, BooleanField,
                     DateField, SelectField, TimeField) # for forms
-from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
+from wtforms.validators import DataRequired, Length, EqualTo, ValidationError
 from flaskblog.models import User, Training # refering to database
 from datetime import datetime, date
 
 
 class RegistrationForm(FlaskForm):
+    """
+    This class is for registration form.
+    """
     username = StringField("Ім'я користувача", validators=[DataRequired(), Length(min=2, max=20)])
     email = StringField('Електронна адреса', validators = [DataRequired()])
     password = PasswordField('Пароль', validators=[DataRequired()])
@@ -20,12 +23,12 @@ class RegistrationForm(FlaskForm):
                                     validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Зареєструватися')
 
-    def validate_username(self, username):
+    def validate_username(self, username): # to check if the username is already exist
         user = User.query.filter_by(username=username.data).first()
         if user:
             raise ValidationError("Такий користувач вже існує. Будь ласка, виберіть інше ім'я користувача.")
 
-    def validate_email(self, email):
+    def validate_email(self, email): # to check if the email is already exist
         user = User.query.filter_by(email=email.data).first()
         if user:
             raise ValidationError('Така електронна пошта вже використовується. Будь ласка, виберіть іншу.')
@@ -34,12 +37,18 @@ class RegistrationForm(FlaskForm):
             raise ValidationError("Неправильна адреса електронної пошти.")
 
 class LoginForm(FlaskForm):
+    """
+    This class is for login form.
+    """
     email = StringField('Електронна адреса', validators = [DataRequired()])
     password = PasswordField('Пароль', validators=[DataRequired()])
     remember = BooleanField("Запам'ятати мене")
     submit = SubmitField('Увійти')
 
 class UpdateAccountForm(FlaskForm):
+    """
+    This class for updating the account information.
+    """
     username = StringField("Ім'я користувача", validators=[DataRequired(), Length(min=2, max=20)])
     email = StringField('Електронна адреса', validators = [DataRequired()])
     picture = FileField('Змінити фотографію', validators=[FileAllowed(['jpg', 'png', 'jpeg'])])
@@ -62,6 +71,9 @@ class UpdateAccountForm(FlaskForm):
                 raise ValidationError("Неправильна адреса електронної пошти.")
 
 class RequestResetForm(FlaskForm):
+    """
+    This class is for requesting the reset password.
+    """
     email = StringField('Електронна адреса', validators=[DataRequired()])
     submit = SubmitField('Запит на скидання пароля')
 
@@ -74,12 +86,18 @@ class RequestResetForm(FlaskForm):
             raise ValidationError('Облікового запису з такою електронною поштою не існує. Вам необхідно спочатку зареєструватись.')
 
 class ResetPasswordForm(FlaskForm):
+    """
+    This class is for reseting the password.
+    """
     password = PasswordField('Пароль', validators=[DataRequired()])
     confirm_password = PasswordField('Підтвердити пароль',
                                     validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Запит на скидання пароля')
 
 class ChooseTrainerForm(FlaskForm):
+    """
+    This form is for choosing the trainer and the date and time.
+    """
     trainername = SelectField('Тренери', choices=[("Артем Скопа", "Артем Скопа"), ("Владислав Борисюк", "Владислав Борисюк"), ("Наталя Кравченко", "Наталя Кравченко"), ("Костянтин Новацький", "Костянтин Новацький")])
     entrydate = DateField('Дата', format='%Y-%m-%d', validators=[DataRequired()], render_kw={"class": "datepicker"})
     entrytime = TimeField('Час', format='%H:%M', validators=[DataRequired()])
@@ -94,7 +112,7 @@ class ChooseTrainerForm(FlaskForm):
         if training is not None:
             raise ValidationError('На жаль, цей тренер уже зайнятий у вибраний Вами час.')
 
-        # setting uo the bounderies in time.
+        # setting up the bounderies in time.
         current_date = datetime.now()
         if entrydate.data.year != 2023:
             raise ValidationError('Запис доступний лише на 2023 рік.')
@@ -122,6 +140,7 @@ class ChooseTrainerForm(FlaskForm):
             if day not in [0, 2, 3]:
                 raise ValidationError("На жаль, на цей день тижня відсутні тренування з цим тренером.")
 
+    # check if the trainer is available in this time.
     def validate_entrytime(self, entrytime):
         time = datetime.combine(date.today(), entrytime.data)
         hour = time.hour
