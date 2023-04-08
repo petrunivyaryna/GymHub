@@ -32,8 +32,8 @@ def home_1():
 @app.route("/register", methods=['GET', 'POST'])
 def register():
     # if the user is already logged in, we don't want to let him register again
-    if current_user.is_authenticated:
-        return redirect(url_for('home'))
+    # if current_user.is_authenticated:
+    #     return redirect(url_for('home'))
     form = RegistrationForm()
     if form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
@@ -155,8 +155,8 @@ def reset_request():
     """
     Checking if the user with this email has the account.
     """
-    if current_user.is_authenticated:
-        return redirect(url_for('home'))
+    # if current_user.is_authenticated:
+    #     return redirect(url_for('home'))
     form = RequestResetForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
@@ -169,8 +169,8 @@ def reset_request():
 
 @app.route("/reset_password/<token>", methods=['GET', 'POST'])
 def reset_token(token):
-    if current_user.is_authenticated:
-        return redirect(url_for('home'))
+    # if current_user.is_authenticated:
+    #     return redirect(url_for('home'))
     user = User.verify_reset_token(token) # checking if the token is valid
     if user is None:
         flash('Це недійсний або застарілий токен.', 'warning')
