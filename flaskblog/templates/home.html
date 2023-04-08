@@ -1,15 +1,49 @@
 {% extends "layout.html" %}
 {% block content %}
-    {% for post in posts %}
-        <article class="media content-section">
-          <div class="media-body">
-            <div class="article-metadata">
-              <a class="mr-2" href="#">{{ post.author }}</a>
-              <small class="text-muted">{{ post.date_posted }}</small>
+<div class="row d-flex justify-content-center align-items-center">
+  <div class="col-md-12">
+    <div class="content-section" id="about">
+      <form method="POST" action="" class="item">
+        {{ form.hidden_tag() }}
+        <div class="about-us">
+          <div class="about-item">
+            <p class="item-text">
+              Шукаєте спортивний клуб, який допоможе вам досягти <br>своїх фітнес-цілей та покращити своє здоров'я? Тоді
+              наш<br>
+              клуб "GymHub" - саме те, що вам потрібно!
+
+              Ми маємо професійний тренерський склад, який допоможе вам <br>створити ідеальну програму
+              тренувань, згідно з вашими потребами та метою.
+            </p>
+            <div class="lines">
+              <div class="line"></div>
+              <img src="static/img/book.png" alt="">
+              <div class="line"></div>
             </div>
-            <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
-            <p class="article-content">{{ post.content }}</p>
+            <div class="item-img">
+              <img src="static/img/gym2.png" alt="">
+            </div>
           </div>
-        </article>
-    {% endfor %}
+          <div class="about-item">
+            <div class="item-img">
+              <img src="static/img/gym3.png" alt="">
+            </div>
+            <div class="lines">
+              <div class="line"></div>
+              <img src="static/img/Meeting.png" alt="">
+              <div class="line"></div>
+            </div>
+            <p class="item-text">
+              У нашому клубі ви зможете не тільки покращити своє фізичне здоров'я, але й підвищити рівень своєї
+              енергії,<br>
+              зосередженості та розумових здібностей. Ми прагнемо створити дружню та підтримуючу атмосферу в клубі. <br>
+              Тож не гайте часу та приєднуйтесь до нашого спортивного клубу "GymHub" просто зараз. Разом ми досягнемо
+              ваші
+              цілі!
+            </p>
+          </div>
+      </form>
+    </div>
+  </div>
+</div>
 {% endblock content %}

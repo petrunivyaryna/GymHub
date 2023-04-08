@@ -8,9 +8,11 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-image: url(./img/bg.png);
+    background-image: url(./img/bg_plus.jpg);
+    background-size: cover;
     background-repeat: no-repeat;
     color: #333333;
+    /* background-size: ; */
 }
 
 h1,
@@ -23,7 +25,7 @@ h6 {
 }
 
 .bg-steel {
-    background-color: rgba(155, 82, 27, 0.87);
+    background-color: rgba(155, 82, 27, 0);
 }
 
 .navbar {
@@ -75,6 +77,25 @@ h6 {
     color: #FFFFFF;
 }
 
+.item-btn-1 .btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    background-color: #00000000;
+    border-radius: 16.3051px;
+    border: 1.08701px solid #05B895;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16.3051px;
+    line-height: 19px;
+    color: #05B895;
+    position: relative;
+    left: 110px;
+}
+
 .item-title {
     white-space: nowrap;
     text-align: center;
@@ -104,20 +125,98 @@ h6 {
 }
 
 .site-header .navbar-nav .nav-link:hover {
-    color: #ffffff;
+    color: #05B895;
 }
 
 .site-header .navbar-nav .nav-link.active {
     font-weight: • 500;
 }
 
+.nav-item {
+    margin-right: 10px;
+}
+
+.scrollbox {
+    width: 350px;
+    height: 500px;
+    overflow: auto;
+    border: 1px solid rgba(155, 82, 27, 0.87);
+    padding: 10px;
+    border-radius: 10px;
+    background: rgba(155, 82, 27, 0.87);
+    position: relative;
+    left: 800px;
+    top: -275px;
+}
+
+.scrollbox::-webkit-scrollbar {
+    width: 15px;
+    height: 8px;
+}
+
+.scrollbox::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 8px;
+}
+
+.scrollbox::-webkit-scrollbar-track {
+    background-color: #f5f5f5;
+    border-radius: 8px;
+}
+
+.main_block {
+    background-color: rgba(155, 82, 27, 0.041);
+    height: 45px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.main_block h4 {
+    color: #f0efef;
+    font-family: 'Montserrat';
+    font-style: normal;
+    text-align: center;
+}
+
+.block {
+    background-color: white;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.block h5 {
+    margin-top: 0;
+    font-family: 'Montserrat';
+    font-style: normal;
+}
+
+.block h6 {
+    margin-top: 0;
+    font-family: 'Montserrat';
+    font-style: normal;
+}
+
+.block p {
+    margin-bottom: 0;
+    font-family: 'Montserrat';
+    font-style: normal;
+}
+
 #login,
-#register {
+#register,
+#resetpas,
+#token {
     background: rgba(155, 82, 27, 0.87);
 }
 
+#register .item-title {
+    font-size: 29px;
+}
+
 .account-heading {
-    color: #ffffff;
+    color: #FFFFFF;
 }
 
 #account {
@@ -127,6 +226,9 @@ h6 {
     background: rgba(155, 82, 27, 0.87);
     border-bottom-left-radius: 70.6554px;
     border-bottom-right-radius: 70.6554px;
+    position: relative;
+    right: 200px;
+    top: 220px;
 }
 
 #account .item-title {
@@ -151,7 +253,7 @@ h6 {
 }
 
 .content-section {
-    margin-top: 6%;
+    margin-top: 3%;
     background: #FFFFFF;
     border-radius: 70.6554px;
     margin-bottom: 20px;
@@ -162,7 +264,7 @@ h6 {
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 13px;
     line-height: 13px;
     text-align: center;
     padding: 0 30px;
@@ -216,8 +318,8 @@ a.article-title:hover {
 }
 
 .account-img {
-    height: 125px;
-    width: 125px;
+    height: 180px;
+    width: 180px;
     margin-bottom: 16px;
 }
 
@@ -227,4 +329,367 @@ a.article-title:hover {
 
 .form-group {
     margin-bottom: 0.5rem;
+    margin-top: -0.5rem;
+}
+
+#about {
+    background: rgba(155, 82, 27, 0.87);
+}
+
+.about-us {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 22px;
+    text-align: center;
+    color: #FFFFFF;
+    gap: 95px;
+}
+
+.lines {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.line {
+    width: 90px;
+    border: 2px solid #000000;
+    border-radius: 10px;
+}
+
+.item-img img {
+    width: 400px;
+    object-fit: contain;
+}
+
+#resetpas .item-title,
+#token .item-title {
+    font-size: 30px;
+}
+
+.smalltext {
+    color: white;
+}
+
+#trainer {
+    position: absolute;
+    width: 579px;
+    height: 450px;
+    right: 500px;
+    top: 15px;
+    border-radius: 70.6554px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(155, 82, 27, 0.87);
+    border-bottom-left-radius: 70.6554px;
+    border-bottom-right-radius: 70.6554px;
+}
+
+#trainer .form-group {
+    margin-bottom: 1rem;
+}
+
+#trainer .item-title {
+    font-size: 30px;
+}
+
+#trainer .item-form {
+    width: 100%;
+}
+
+.carousel {
+    height: 550px;
+    width: 70%;
+    left: 325px;
+    margin: 0 auto;
+}
+
+.carousel__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel__track-container {
+    background: #05B895A6;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50px;
+}
+
+.carousel__track {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    position: relative;
+    height: 100%;
+    transition: transform 250ms ease-in;
+}
+
+.carousel__slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.carousel__button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+.carousel__button--left {
+    left: -100px;
+}
+
+.carousel__button--right {
+    right: -100px;
+}
+
+.carousel__button img {
+    width: 50px;
+}
+
+.carousel__nav {
+    background-color: #00000000;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    border-radius: 50px;
+}
+
+.carousel__indicator {
+    border: 0;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, .3);
+    margin: 0 12px;
+    cursor: pointer;
+
+}
+
+.carousel__indicator.current-slide {
+    background: rgba(253, 253, 253, 0.75);
+}
+
+
+.is-hidden {
+    display: none;
+}
+
+
+table {
+    /* зробити рамки прозорими */
+    height: 530px;
+    width: 1200px;
+    position: relative;
+    right: 55px;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+td,
+th {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.day-hour {
+    background-color: #05B895;
+    color: #ffffff;
+    font-family: 'Montserrat';
+    font-style: normal;
+    text-align: center;
+}
+
+.lesson {
+    background-color: #FEC20C;
+    color: #ffffff;
+    font-family: 'Montserrat';
+    font-style: normal;
+    text-align: center;
+    font-size: 20px;
+}
+
+
+a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.active {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.abonements {
+    background-color: #00000000;
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+}
+
+.item-img-1 {
+    position: relative;
+    width: 420px;
+    height: 588px;
+}
+
+.item-img-1 a {
+    position: absolute;
+    bottom: 20px;
+    left: 80%;
+    transform: translateX(-50%);
+}
+
+.button-yellow-one,
+.button-green,
+.button-yellow-two {
+    position: relative;
+    /* змінено з absolute на relative */
+    width: 170px;
+    height: 50px;
+    background: rgba(221, 191, 40, 0.85);
+    border-radius: 17px;
+    font-family: 'Montserrat';
+    border: none;
+    color: #000000;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+    /* змінено з bottom на margin-top */
+}
+
+
+.button-green {
+    background: rgba(5, 184, 149, 0.87);
+}
+
+.button-yellow-one:hover,
+.button-green:hover,
+.button-yellow-two:hover {
+    transform: scale(1.05);
+}
+
+.container-1 {
+    position: relative;
+    width: 580px;
+    height: 255px;
+    top: -120px;
+    left: -20px;
+    margin: 0 auto;
+    /* horizontally center the container */
+}
+
+.title {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 80px;
+    text-align: center;
+    color: #FFFFFF;
+    margin-bottom: 20px;
+    /* add some margin at the bottom */
+}
+
+button.my-btn {
+    box-sizing: border-box;
+    position: absolute;
+    width: 280px;
+    height: 85px;
+    left: 23%;
+    top: 115%;
+    /* horizontally center the button */
+    transform: translateX(-50%);
+    bottom: 20px;
+    /* set the distance from the bottom */
+    border: 3px solid #FFFFFF;
+    background-color: transparent;
+    /* make the button transparent */
+}
+
+button.my-btn:hover {
+    background-color: #074135a6;
+    /* змінюємо колір фону при наведенні на білий */
+}
+
+button.my-btn span {
+    position: absolute;
+    width: 108px;
+    height: 37px;
+    left: 50%;
+    top: 50%;
+    /* vertically center the text */
+    transform: translate(-50%, -50%);
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 23px;
+    line-height: 37px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+button.my-btn-1 {
+    box-sizing: border-box;
+    position: absolute;
+    width: 280px;
+    height: 85px;
+    left: 77%;
+    top: 115%;
+    /* horizontally center the button */
+    transform: translateX(-50%);
+    bottom: 20px;
+    /* set the distance from the bottom */
+    border: 3px solid #FFFFFF;
+    background-color: #05B895;
+    /* make the button transparent */
+}
+
+button.my-btn-1:hover {
+    background-color: #074135;
+    /* змінюємо колір фону при наведенні на білий */
+}
+
+button.my-btn-1 span {
+    position: absolute;
+    width: 108px;
+    height: 37px;
+    left: 33%;
+    top: 50%;
+    /* vertically center the text */
+    transform: translate(-50%, -50%);
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 23px;
+    line-height: 37px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.navbar-brand-1 img {
+    width: 169px;
+    height: auto;
+    margin-top: 5px;
+    margin-left: 30px;
 }

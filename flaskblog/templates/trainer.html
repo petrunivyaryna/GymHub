@@ -1,0 +1,90 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="row d-flex justify-content-center align-items-center">
+    <div class="col-md-8">
+        <div class="content-section" , id="trainer">
+            <form method="POST" action="" class="item">
+                {{ form.hidden_tag() }}
+                <fieldset class="form-group">
+                    <legend class="mb-0 text-center item-title">Обрати тренера</legend>
+                    <div class="form-group">
+                        {{ form.trainername.label(class="form-control-label") }}
+
+                        {% if form.trainername.errors %}
+                        {{ form.trainename(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.trainername.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.trainername(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        {{ form.entrydate.label(class="form-control-label") }}
+                        {% if form.entrydate.errors %}
+                        {{ form.entrydate(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.entrydate.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.entrydate(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        {{ form.entrytime.label(class="form-control-label") }}
+                        {% if form.entrytime.errors %}
+                        {{ form.entrytime(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.entrytime.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.entrytime(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+                </fieldset>
+                <div class="form-group item-btn">
+                    {{ form.submit(class="btn btn-outline-info") }}
+                </div>
+            </form>
+        </div>
+        <div class="carousel">
+            <button class="carousel__button carousel__button--left is-hidden">
+                <img src="static\img\button-left.png" alt="">
+            </button>
+            <div class="carousel__track-container">
+                <ul class="carousel__track">
+                    <li class="carousel__slide current-slide">
+                        <img class="carousel__image" src="static/img/trainer_1.png" alt="">
+                    </li>
+                    <li class="carousel__slide">
+                        <img class="carousel__image" src="static/img/trainer_2.png" alt="">
+                    </li>
+                    <li class="carousel__slide">
+                        <img class="carousel__image" src="static/img/trainer_3.png" alt="">
+                    </li>
+                    <li class="carousel__slide">
+                        <img class="carousel__image" src="static/img/trainer_4.png" alt="">
+                    </li>
+                </ul>
+            </div>
+            <button class="carousel__button carousel__button--right">
+                <img src="static\img\button-right.png" alt="">
+            </button>
+
+            <div class="carousel__nav">
+                <button class="carousel__indicator current-slide"></button>
+                <button class="carousel__indicator"></button>
+                <button class="carousel__indicator"></button>
+                <button class="carousel__indicator"></button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="static/carousel.js"></script>
+{% endblock content %}
