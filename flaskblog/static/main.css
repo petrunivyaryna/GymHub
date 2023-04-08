@@ -318,8 +318,8 @@ a.article-title:hover {
 }
 
 .account-img {
-    height: 125px;
-    width: 125px;
+    height: 180px;
+    width: 180px;
     margin-bottom: 16px;
 }
 
@@ -561,7 +561,8 @@ a {
 .button-yellow-one,
 .button-green,
 .button-yellow-two {
-    position: relative; /* змінено з absolute на relative */
+    position: relative;
+    /* змінено з absolute на relative */
     width: 170px;
     height: 50px;
     background: rgba(221, 191, 40, 0.85);
@@ -573,7 +574,8 @@ a {
     line-height: 50px;
     cursor: pointer;
     transition: all 0.3s ease;
-    margin-top: 15px; /* змінено з bottom на margin-top */
+    margin-top: 15px;
+    /* змінено з bottom на margin-top */
 }
 
 
@@ -587,3 +589,107 @@ a {
     transform: scale(1.05);
 }
 
+.container-1 {
+    position: relative;
+    width: 580px;
+    height: 255px;
+    top: -120px;
+    left: -20px;
+    margin: 0 auto;
+    /* horizontally center the container */
+}
+
+.title {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 80px;
+    text-align: center;
+    color: #FFFFFF;
+    margin-bottom: 20px;
+    /* add some margin at the bottom */
+}
+
+button.my-btn {
+    box-sizing: border-box;
+    position: absolute;
+    width: 280px;
+    height: 85px;
+    left: 23%;
+    top: 115%;
+    /* horizontally center the button */
+    transform: translateX(-50%);
+    bottom: 20px;
+    /* set the distance from the bottom */
+    border: 3px solid #FFFFFF;
+    background-color: transparent;
+    /* make the button transparent */
+}
+
+button.my-btn:hover {
+    background-color: #074135a6;
+    /* змінюємо колір фону при наведенні на білий */
+}
+
+button.my-btn span {
+    position: absolute;
+    width: 108px;
+    height: 37px;
+    left: 50%;
+    top: 50%;
+    /* vertically center the text */
+    transform: translate(-50%, -50%);
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 23px;
+    line-height: 37px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+button.my-btn-1 {
+    box-sizing: border-box;
+    position: absolute;
+    width: 280px;
+    height: 85px;
+    left: 77%;
+    top: 115%;
+    /* horizontally center the button */
+    transform: translateX(-50%);
+    bottom: 20px;
+    /* set the distance from the bottom */
+    border: 3px solid #FFFFFF;
+    background-color: #05B895;
+    /* make the button transparent */
+}
+
+button.my-btn-1:hover {
+    background-color: #074135;
+    /* змінюємо колір фону при наведенні на білий */
+}
+
+button.my-btn-1 span {
+    position: absolute;
+    width: 108px;
+    height: 37px;
+    left: 33%;
+    top: 50%;
+    /* vertically center the text */
+    transform: translate(-50%, -50%);
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 23px;
+    line-height: 37px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.navbar-brand-1 img {
+    width: 169px;
+    height: auto;
+    margin-top: 5px;
+    margin-left: 30px;
+}

@@ -15,6 +15,10 @@ from flask_login import login_user, current_user, logout_user, login_required # 
 from flask_mail import Message # to send the email to the user
 
 @app.route("/")
+@app.route("/main", methods=['GET', 'POST'])
+def main():
+    return render_template('main.html')
+
 @app.route("/home", methods=['GET', 'POST'])
 def home():
     form=RegistrationForm()
@@ -38,8 +42,8 @@ def register():
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
-    if current_user.is_authenticated:
-        return redirect(url_for('home'))
+    # if current_user.is_authenticated:
+    #     return redirect(url_for('home'))
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
@@ -57,7 +61,7 @@ def login():
 @app.route("/logout")
 def logout():
     logout_user()
-    return redirect(url_for('home'))
+    return redirect(url_for('main'))
 
 
 def save_picture(form_picture):
@@ -76,11 +80,21 @@ def save_picture(form_picture):
     picture_path = os.path.join(app.root_path, 'static/profile_pics', picture_fn)
 
     # correcting the size of the picture
-    output_size = (125, 125)
-    i = Image.open(form_picture)
-    i.thumbnail(output_size)
+    output_size = (250, 250)
+    with Image.open(form_picture) as img:
+        # Getting the size of the picture
+        width, height = img.size
+        # Finding the max size between wigth and height
+        max_size = max(width, height)
+        # Creating a new photo with white background
+        padded_img = Image.new('RGB', (max_size, max_size), (155, 82, 27))
+        # Place the input image in the center
+        padded_img.paste(img, ((max_size - width) // 2, (max_size - height) // 2))
+        # Reducing the size of the image
+        padded_img.thumbnail(output_size)
+        # Saving the image
+        padded_img.save(picture_path)
 
-    i.save(picture_path) # saving by the appropriate path
     return picture_fn
 
 
