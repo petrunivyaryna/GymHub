@@ -24,6 +24,11 @@ def home():
     form=RegistrationForm()
     return render_template('home.html', title='Про нас', form=form)
 
+@app.route("/home_1", methods=['GET', 'POST'])
+def home_1():
+    form=RegistrationForm()
+    return render_template('home_1.html', title='Про нас', form=form)
+
 @app.route("/register", methods=['GET', 'POST'])
 def register():
     # if the user is already logged in, we don't want to let him register again
