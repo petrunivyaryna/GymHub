@@ -81,7 +81,7 @@ class ResetPasswordForm(FlaskForm):
 
 class ChooseTrainerForm(FlaskForm):
     trainername = SelectField('Тренери', choices=[("Артем Скопа", "Артем Скопа"), ("Владислав Борисюк", "Владислав Борисюк"), ("Наталя Кравченко", "Наталя Кравченко"), ("Костянтин Новацький", "Костянтин Новацький")])
-    entrydate = DateField('Дата', format='%Y-%m-%d', validators=[DataRequired()])
+    entrydate = DateField('Дата', format='%Y-%m-%d', validators=[DataRequired()], render_kw={"class": "datepicker"})
     entrytime = TimeField('Час', format='%H:%M', validators=[DataRequired()])
     submit = SubmitField('Обрати')
 
@@ -140,10 +140,3 @@ class ChooseTrainerForm(FlaskForm):
             if (hour != 17 and hour != 19 and hour != 20) or minutes != 0:
                 raise ValidationError("На жаль, на цю годину відсутні тренування з цим тренером.")
 
-
-class GroupTrainings(FlaskForm):
-    """
-    This class should create the base of the page where the client can choose
-    the group training.
-    """
-    book = SubmitField('Обрати')

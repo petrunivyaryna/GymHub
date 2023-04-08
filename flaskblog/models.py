@@ -13,7 +13,6 @@ class User(db.Model, UserMixin):
     image_file = db.Column(db.String(20), nullable=False, default='default.jpg') # by default: image_file
     password = db.Column(db.String(60), nullable=False)
     trainings = db.relationship('Training', backref='author', lazy=True)
-    group_trainings = db.relationship('GroupTraining', backref='author', lazy=True)
 
     def get_reset_token(self, expires_sec=1800):
         """
@@ -46,12 +45,3 @@ class Training(db.Model):
 
     def __repr__(self):
         return f"Training('{self.trainer}', '{self.date}')"
-    
-class GroupTraining(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(100))
-    date = db.Column(db.DateTime)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-
-    def __repr__(self):
-        return f"Training('{self.title}', '{self.date}')"

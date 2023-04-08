@@ -1,14 +1,13 @@
 import os # for making sure we save the photo in the same extension it was uploaded
 import secrets # for generating random hex
 import datetime
-from get_day import getday
 # to resize the image to 125 pixels in order to save a lot of space in our file system and speed up our web
 from PIL import Image
 from flask import render_template, url_for, flash, redirect, request
 from flaskblog import app, db, bcrypt, mail
 from flaskblog.forms import (RegistrationForm, LoginForm, UpdateAccountForm,
-                            RequestResetForm, ResetPasswordForm, ChooseTrainerForm, GroupTrainings)
-from flaskblog.models import User, Training, GroupTraining
+                            RequestResetForm, ResetPasswordForm, ChooseTrainerForm)
+from flaskblog.models import User, Training
 from flask_login import login_user, current_user, logout_user, login_required
 from flask_mail import Message
 
@@ -28,7 +27,7 @@ def register():
         user = User(username=form.username.data, email=form.email.data, password=hashed_password)
         db.session.add(user)
         db.session.commit()
-        flash('Your account has been created! You are now able to log in', 'success')
+        flash('Ваш обліковий запис було створено! Тепер Ви можете увійти в систему.', 'success')
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
 
@@ -48,7 +47,7 @@ def login():
             next_page = request.args.get('next')
             return redirect(next_page) if next_page else redirect(url_for('home'))
         else:
-            flash('Login Unsuccessful. Please check email and password', 'danger')
+            flash('Не вдалося увійти. Будь ласка, перевірте електронну адресу та пароль.', 'danger')
     return render_template('login.html', title='Login', form=form)
 
 @app.route("/logout")
@@ -93,7 +92,7 @@ def account():
         current_user.username = form.username.data
         current_user.email = form.email.data
         db.session.commit()
-        flash('Your account has been updated!', 'success')
+        flash('Ваш обліковий запис було оновлено!', 'success')
         return redirect(url_for('account'))
     elif request.method == 'POST' and 'cancel' in request.form:
         training_id = request.form.get('training_id')
@@ -101,7 +100,7 @@ def account():
             training = Training.query.get(training_id)
             db.session.delete(training)
             db.session.commit()
-            flash('The training has been cancelled.', 'success')
+            flash('Тренування було скасовано.', 'success')
             return redirect(url_for('account'))
     elif request.method == 'GET': # form already contains the previous information
         form.username.data = current_user.username
@@ -122,6 +121,7 @@ def send_reset_email(user):
 If you did not make this request then simply ignore this email and no changes will be made.
 """
     mail.send(msg)
+
 @app.route("/reset_password", methods=['GET', 'POST'])
 def reset_request():
     """
@@ -133,7 +133,7 @@ def reset_request():
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
         send_reset_email(user)
-        flash('An email has been set with instructions to reset your password.', 'info')
+        flash('На Вашу електронну адресу було надіслано листа з інструкціями щодо скидання пароля.', 'info')
         return redirect(url_for('login'))
     return render_template('reset_request.html', title='Reset Password', form=form)
 
@@ -143,16 +143,16 @@ def reset_token(token):
         return redirect(url_for('home'))
     user = User.verify_reset_token(token)
     if user is None:
-        flash('That is an invalid or expired token', 'warning')
+        flash('Це недійсний або застарілий токен.', 'warning')
         return redirect(url_for('reset_request'))
     form = ResetPasswordForm()
     if form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
         user.password = hashed_password
         db.session.commit()
-        flash('Your password has been updated! You are now able to log in', 'success')
+        flash('Ваш пароль було оновлено! Ви можете увійти в систему.', 'success')
         return redirect(url_for('login'))
-    return render_template('reset_token.html', title='Reset Password', form=form)
+    return render_template('reset_token.html', title='Змінити пароль', form=form)
 
 @app.route("/trainer", methods=['GET', 'POST'])
 @login_required
@@ -163,7 +163,6 @@ def trainer():
         training = Training(trainer=form.trainername.data, date=my_datatime, author=current_user)
         db.session.add(training)
         db.session.commit()
-        flash('You have been signed up for a training!', 'success')
         return redirect(url_for('account'))
     return render_template('trainer.html', title='Choose Trainer', form=form)
 
@@ -172,26 +171,3 @@ def trainer():
 def abonement():
     form = RegistrationForm()
     return render_template('abonement.html', form=form)
-
-
-
-# pages for the group trainings.
-@app.route("/group_trainings")
-@login_required
-def group_trainings():
-    return render_template('table.html')
-
-# gymnastics 1
-@app.route("/gymnastic", methods=['GET', 'POST'])
-@login_required
-def gymnastic():
-    form = GroupTrainings()
-    next_date = getday(0)
-    free_places = 15
-    if form.validate_on_submit():
-        if free_places == 1:
-            free_places += 14
-            date = getday(0, next_date)
-            return render_template('gymnastic.html', form=form, date=date, free_places=1)
-        free_places -= 1
-    return render_template('gymnastic.html', form=form, date=next_date, free_places=free_places + 1)

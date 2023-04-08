@@ -587,34 +587,3 @@ a {
     transform: scale(1.05);
 }
 
-#gymnastic {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background:rgba(155, 82, 27, 0.87);
-    border-bottom-left-radius: 70.6554px;
-    border-bottom-right-radius: 70.6554px;
-    width: 700px;
-    height: 600px;
-    text-align: center;
-    position: relative;
-    right: 30px;
-}
-
-
-#gymnastic .form-group {
-    margin-bottom: 1rem;
-}
-
-#gymnastic .item-title {
-    font-size: 30px;
-}
-
-#gymnastic .item-form {
-    width: 100%;
-}
-
-#gymnastic .item-btn {
-    width: 100%;
-    margin-top: 20px;
-}
